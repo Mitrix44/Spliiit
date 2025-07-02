@@ -14,7 +14,10 @@ function Parcours() {
 
   async function step2() {
     console.log(formData)
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/auth/me`);
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/auth/me`, {
+      method: 'POST',
+      body: JSON.parse({ indicatif_code: formData.indicatif_code, numero: formData.numero.value })
+    });
     if (response.ok) {
       setStep(2);
     } else {
