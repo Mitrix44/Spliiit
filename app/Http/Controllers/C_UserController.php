@@ -16,7 +16,7 @@ class C_UserController extends Controller
    
         // Validation possible ici si besoin
 
-        try {
+        // try {
             $user = User::where('numero', $request->input('numero'))->first();
 
             if ($user) {
@@ -72,13 +72,13 @@ class C_UserController extends Controller
                 'numero' => $user->numero
             ], 201);
 
-        } catch (\Exception $e) {
-            return response()->json([
-                'error' => 'An error occurred while saving user data.',
-                'success' => false,
-                'details' => $e->getMessage()
-            ], 500);
-        }
+        // } catch (\Exception $e) {
+        //     return response()->json([
+        //         'error' => 'An error occurred while saving user data.',
+        //         'success' => false,
+        //         'details' => $e->getMessage()
+        //     ], 500);
+        // }
     
 }
 
