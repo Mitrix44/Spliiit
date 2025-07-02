@@ -7,6 +7,8 @@ function Step2({ formData, setFormData }) {
   return (
     <div className="m-0 pt-20 pb-20 pl-5 pr-5 h-screen w-screen flex flex-col justify-start items-center">
       <Stepper step={2} />
+      <h1 className="text-3xl font-bold mb-8">Confirmez votre numéro</h1>
+      <p className="text-xs">Entrez le code reçu au {formData.indicatif_code}{formData.numero.value.slice(1)}.</p>
       <OtpInput
         value={formData.code_verified}
         onChange={handleChange}

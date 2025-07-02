@@ -22,7 +22,7 @@ function Step1({ onNextStep, formData, setFormData }) {
   return (
     <div className="m-0 pt-20 pb-20 pl-5 pr-5 h-screen w-screen flex flex-col justify-start items-center">
       <Stepper step={1} />
-      <h1 className="text-3xl font-bold mb-8">Inscription</h1>
+      <h1 className="text-3xl font-bold mb-8">Connexion & Inscription</h1>
       <form className="p-0 m-0 gap-5 flex flex-col justify-start items-center w-full" onSubmit={(event) => { handleSubmit(event) }}>
         <select onChange={(event) => { setFormData((prev) => ({ ...prev, indicatif_code: event.target.value })) }} className="border-slate-300 w-full border-2 p-3 rounded-lg">
           {indicatifs.map(indicatif =>
