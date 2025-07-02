@@ -15,7 +15,7 @@ class C_UserController extends Controller
 
    
         // Validation possible ici si besoin
-dd($request->all());
+
         try {
             $user = User::where('numero', $request->input('numero'))->first();
 
