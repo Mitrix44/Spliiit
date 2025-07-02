@@ -10,12 +10,14 @@ class C_OPTController extends Controller
 {
     public function PostsendOPT(string $indicateur, string $numero)
     {
-        $numeroComplet = $indicateur . $numero;
+         $numeroComplet = $indicateur . $numero;
     
         if (!$numeroComplet) {
             return ['error' => 'Le numéro est requis.'];
         }
-    
+        if(substr($numeroComplet, 0, 1) === '0' && strlen($numeroComplet) > 1) {
+            $numeroComplet = substr($numeroComplet, 1);
+        }
         $user = User::where('numero', $numero)->first();
         if (!$user) {
             return ['error' => 'Utilisateur non trouvé.'];
@@ -29,7 +31,7 @@ class C_OPTController extends Controller
             "type" => "transactional",
             "unicodeEnabled" => false,
             "sender" => "Spliiit",
-            "recipient" => $numeroComplet,
+            "recipient" =>  $numeroComplet,
             "content" => "Le code à soumettre est " . $code,
             "tag" => "tag1",
             "organisationPrefix" => "Spliiit vous envoie un code de vérification"

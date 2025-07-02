@@ -11,16 +11,11 @@ class C_UserController extends Controller
 {
    public function postuser(Request $request)
 {
-    // $request->validate([
-    //     'numero' => 'required|string|unique:users,numero',
-    //     'code_verified' => 'nullable|string',
-    //     'code_date_validated' => 'nullable|date',
-    //     'indicatif_code' => 'nullable|string',
-    // ]);
+  
 
    
         // Validation possible ici si besoin
-
+dd($request->all());
         try {
             $user = User::where('numero', $request->input('numero'))->first();
 
