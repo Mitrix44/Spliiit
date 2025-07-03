@@ -17,17 +17,6 @@ class C_Authentificator extends Controller
         $this->googleAuthenticator = new GoogleAuthenticator(); 
     }
 
-    public function lierautentificator(Request $request)
-    {
-        $token = $request->input('token');
-
-        if ($token !== $this->token) {
-            return response()->json(['error' => 'Token d\'authentification invalide.'], 401);
-        }
-
-        return response()->json(['message' => 'Authentification réussie.'], 200);
-    }
-
     public function generateSecret()
     {
         $secret = $this->googleAuthenticator->generateSecret();

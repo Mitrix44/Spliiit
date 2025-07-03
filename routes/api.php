@@ -25,7 +25,7 @@ Route::group(['prefix'=>'/OTH'],function(){
         Route::post('/auth/generate-secret', 'generateSecret')->name('generateSecret');
         Route::post('/auth/generate-qr-code', 'generateQrCode')->name('generateQrCode');
         Route::post('/auth/verify-authentication', 'verifyAuthentication')->name('verifyAuthentication');
-        Route::post('/auth/lier-authentificator', 'lierAuthentificator')->name('lierAuthentificator');
+        
  
     });
 });
