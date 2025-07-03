@@ -24,20 +24,28 @@ class C_UserController extends Controller
                 $user->code_verified = $request->input('code_verified', null);
                 $user->code_date_validated = \Carbon\Carbon::createFromFormat('d/m/Y', now()->format('d/m/Y'));
                 $user->indicatif_code = $request->input('indicatif_code', $user->indicatif_code);
-                $user->indicatif_code = $request->input('name', null);
-                $user->indicatif_code = $request->input('surname', null);
+                // $user->name = $request->input('name', null);
+                // $user->surname= $request->input('surname', null);
 
                 $user->save();
 
                 $optController = new C_OPTController();
                 
                 $result = $optController->PostsendOPT($request->input('indicatif_code'),$request->input('numero'));
-
+               
                 if (isset($result['error'])) {
                     return response()->json([
                         'message' => 'User updated but OTP sending failed.',
                         'details' => $result['error']
                     ], 500);
+                }
+                if($user->name == null && $user->surname == null){
+                    return response()->json([
+                        'message' => 'User updated successfully but no name or surname provided.',
+                        'success' => true,
+                        'news'=>true,
+                        'numero' => $request->input('numero'),
+                    ], 200);
                 }
 
                 return response()->json([
