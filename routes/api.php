@@ -9,6 +9,7 @@ use App\Http\Controllers\C_OPTController;
 Route::group(['prefix'=>'/user'],function(){
     Route::controller(C_UserController::class)->group(function () {
     Route::post('/auth/me', 'postuser')->name('postuser');
+    Route::post('/auth/adduser', 'addnameuser')->name('addnameuser');
 });
 });
 

@@ -71,15 +71,16 @@ class C_OPTController extends Controller
                 $codeDate !== null &&
                 \Carbon\Carbon::parse($codeDate)->diffInMinutes(now()) <= 10
             ) {
-                return response()->json(['message' => 'Code valide', 'success' => true], 200);
+                return response()->json(['message' => 'Code valide', 'success' => true,'user'=>$user], 200);
             }
     
-            return response()->json(['error' => 'Code invalide ou expiré.', 'success' => false], 401);
+            return response()->json(['error' => 'Code invalide ou expiré.', 'success' => false,'user'=>$user], 401);
     
         } catch (\Exception $e) {
             return response()->json([
                 'error' => 'Validation failed: ' . $e->getMessage(),
                 'success' => false
+                
             ], 422);
         }
     }

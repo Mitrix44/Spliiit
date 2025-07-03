@@ -23,6 +23,8 @@ protected $fillable = [
     'code_verified',
     'code_date_validated',
     'indicatif_code',
+    'name',
+    'surname', 
 ];
 
 

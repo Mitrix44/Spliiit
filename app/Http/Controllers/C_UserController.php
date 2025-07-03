@@ -24,6 +24,8 @@ class C_UserController extends Controller
                 $user->code_verified = $request->input('code_verified', null);
                 $user->code_date_validated = \Carbon\Carbon::createFromFormat('d/m/Y', now()->format('d/m/Y'));
                 $user->indicatif_code = $request->input('indicatif_code', $user->indicatif_code);
+                $user->indicatif_code = $request->input('name', null);
+                $user->indicatif_code = $request->input('surname', null);
 
                 $user->save();
 
@@ -50,6 +52,8 @@ class C_UserController extends Controller
             $user = User::create([
                 'numero' => $request->input('numero'),
                 'code_verified' => $request->input('code_verified', null),
+                'name' => $request->input('name', null),
+                'surname' => $request->input('surname', null),
                 'code_date_validated' => \Carbon\Carbon::createFromFormat('d/m/Y', now()->format('d/m/Y')),
                 'indicatif_code' => $request->input('indicatif_code'),
             ]);
@@ -81,5 +85,19 @@ class C_UserController extends Controller
         // }
     
 }
+public function addnameuser(Request $request)
+{
+    $user = User::where('numero', $request->input('numero'))->first();
 
+    if (!$user) {
+        return response()->json(['error' => 'User not found.'], 404);
+    }
+
+    $user->name = $request->input('name');
+    $user->surname = $request->input('surname');
+    $user->save();
+
+    return response()->json(['message' => 'Name updated successfully.', 'success' => true], 200);
+
+}
 }
