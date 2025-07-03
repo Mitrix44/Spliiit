@@ -98,7 +98,7 @@ public function addnameuser(Request $request)
 
     $user->name = $request->input('name');
     $user->surname = $request->input('surname');
-    $user->save();
+    $user->save(); 
 
     return response()->json(['message' => 'Name updated successfully.', 'success' => true,"user"=>$user], 200);
 
