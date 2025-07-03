@@ -9,7 +9,7 @@ function Step2({ formData, setFormData, onNextStep }) {
   }
 
   return (
-    <div className="m-0 pt-20 pb-20 pl-5 pr-5 h-screen w-screen flex flex-col justify-between items-center">
+    <div className="m-0 pt-20 pb-10 pl-5 pr-5 h-screen w-screen flex flex-col justify-between items-center">
       <div className="flex flex-col justify-center items-center">
         <Stepper step={2} />
         <h1 className="text-3xl font-bold mb-8">Confirmez votre numéro</h1>
