@@ -11,11 +11,6 @@ class C_UserController extends Controller
 {
    public function postuser(Request $request)
 {
-  
-
-   
-        // Validation possible ici si besoin
-
         // try {
             $user = User::where('numero', $request->input('numero'))->first();
 
@@ -41,9 +36,9 @@ class C_UserController extends Controller
                 }
                 if($user->name == null && $user->surname == null){
                     return response()->json([
-                        'message' => 'User updated successfully but no name or surname provided.',
+                        'message' => 'User updated successfully and OTP sent.',
                         'success' => true,
-                        'news'=>false,
+                        'news'=>true,
                         'numero' => $request->input('numero'),
                     ], 200);
                 }
