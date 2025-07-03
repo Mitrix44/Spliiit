@@ -29,7 +29,8 @@ function Parcours() {
       }
     });
     if (response.ok) {
-      setFormData((prev) => ({ ...prev, new: response.json.news }))
+      const data = await response.json();
+      setFormData((prev) => ({ ...prev, new: data.news }))
       setStep(2);
     } else {
       toast.error('Un problème est servenu dans l\'envoie du SMS');
