@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('numero')->unique();
             $table->string('code_verified')->nullable();
             $table->string('indicatif_code');
+            $table->string('name')->nullable();
+            $table->string('surname')->nullable();
             $table->timestamp('code_date_validated')->nullable();
             $table->timestamps();
         });

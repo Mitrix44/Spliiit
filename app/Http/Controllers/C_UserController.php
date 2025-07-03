@@ -23,6 +23,8 @@ class C_UserController extends Controller
       $user->code_verified = $request->input('code_verified', null);
       $user->code_date_validated = \Carbon\Carbon::createFromFormat('d/m/Y', now()->format('d/m/Y'));
       $user->indicatif_code = $request->input('indicatif_code', $user->indicatif_code);
+      $user->indicatif_code = $request->input('name', null);
+      $user->indicatif_code = $request->input('surname', null);
 
       $user->save();
 
@@ -80,4 +82,5 @@ class C_UserController extends Controller
     // }
 
   }
+}
 }
