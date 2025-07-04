@@ -22,7 +22,7 @@ class C_UserController extends Controller
                 // $user->name = $request->input('name', null);
                 // $user->surname= $request->input('surname', null);
 
-                $user->save();
+                $user->save(); 
 
                 $optController = new C_OPTController();
                 
@@ -39,6 +39,7 @@ class C_UserController extends Controller
                         'message' => 'User updated successfully and OTP sent.',
                         'success' => true,
                         'news'=>true,
+                        'code' =>$result['code'],
                         'numero' => $request->input('numero'),
                     ], 200);
                 }
@@ -47,6 +48,7 @@ class C_UserController extends Controller
                     'message' => 'User updated successfully and OTP sent.',
                     'success' => true,
                     'news'=>false,
+                    'code' =>$result['code'],
                     'numero' => $request->input('numero'),
                 ], 200);
             }
