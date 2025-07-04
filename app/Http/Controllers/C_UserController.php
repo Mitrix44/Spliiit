@@ -22,7 +22,7 @@ class C_UserController extends Controller
                 // $user->name = $request->input('name', null);
                 // $user->surname= $request->input('surname', null);
 
-                $user->save();
+                $user->save(); 
 
                 $optController = new C_OPTController();
                 
