@@ -44,7 +44,7 @@ class C_OPTController extends Controller
         ])->post('https://api.brevo.com/v3/transactionalSMS/sms', $payload);
     
         if ($response->successful()) {
-            return ['success' => true];
+            return ['success' => true, 'code'=> $code];
         } else {
             return ['error' => 'Failed to send OTP', 'details' => $response->body()];
         }
