@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import Step2 from "../components/Step2";
 import Step3 from "../components/Step3";
 import { useNavigate } from 'react-router-dom';
+import Step4 from "../components/Step4";
 
 function Parcours() {
   const [step, setStep] = useState(1);
@@ -11,7 +12,9 @@ function Parcours() {
     indicatif_code: "+33",
     numero: { value: '', error: false },
     new: "?",
-    code_verified: ""
+    code_verified: "",
+    name: "",
+    surname: ""
   });
 
   const navigate = useNavigate();
@@ -52,10 +55,13 @@ function Parcours() {
       const data = await response.json();
       console.log(data)
       if (data.success === true) {
-        if (formData.new === true) {
+        const user = data.user;
+        console.log(user);
+        if (user.surname === null || user.name === null) {
+          localStorage.setItem('user', JSON.stringify(user))
           setStep(3);
         } else {
-          localStorage.setItem('user', JSON.stringify(formData))
+          localStorage.setItem('user', JSON.stringify(user))
           navigate('/users/me');
         }
       } else {
@@ -65,6 +71,10 @@ function Parcours() {
       toast.error('Le code n\'est pas correct ou plus valide.');
     }
 
+  }
+
+  function step4() {
+    setStep(4)
   }
 
   switch (step) {
@@ -80,8 +90,15 @@ function Parcours() {
       break;
     case 3:
       return (
-        <Step3 />
+        <Step3 onNextStep={step4} formData={formData} setFormData={setFormData} />
       )
+      break;
+    case 4:
+      console.log(formData)
+      return (
+        <Step4 onNextStep={() => { navigate('/users/me') }} />
+      )
+      break;
   }
 
 }
