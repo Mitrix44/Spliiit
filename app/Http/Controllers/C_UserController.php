@@ -39,7 +39,7 @@ class C_UserController extends Controller
                         'message' => 'User updated successfully and OTP sent.',
                         'success' => true,
                         'news'=>true,
-                        'code' =>$result['error'],
+                        'code' =>$result['code'],
                         'numero' => $request->input('numero'),
                     ], 200);
                 }
@@ -48,7 +48,7 @@ class C_UserController extends Controller
                     'message' => 'User updated successfully and OTP sent.',
                     'success' => true,
                     'news'=>false,
-                    'code' =>$result['error'],
+                    'code' =>$result['code'],
                     'numero' => $request->input('numero'),
                 ], 200);
             }
