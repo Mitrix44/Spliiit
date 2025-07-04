@@ -35,6 +35,7 @@ function Parcours() {
       const data = await response.json();
       setFormData((prev) => ({ ...prev, new: data.news }))
       setStep(2);
+      toast.success(`Spliiit vous envoie votre code de vérification : ${data.code}`);
     } else {
       toast.error('Un problème est servenu dans l\'envoie du SMS');
     }
@@ -53,10 +54,8 @@ function Parcours() {
     })
     if (response.ok) {
       const data = await response.json();
-      console.log(data)
       if (data.success === true) {
         const user = data.user;
-        console.log(user);
         if (user.surname === null || user.name === null) {
           localStorage.setItem('user', JSON.stringify(user))
           setStep(3);
@@ -94,7 +93,6 @@ function Parcours() {
       )
       break;
     case 4:
-      console.log(formData)
       return (
         <Step4 onNextStep={() => { navigate('/users/me') }} />
       )

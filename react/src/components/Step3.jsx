@@ -3,7 +3,6 @@ import Stepper from "./stepper";
 
 function Step3({ formData, setFormData, onNextStep }) {
   function handleChange(event) {
-    console.log({ [event.target.name]: event.target.value })
     setFormData((prev) => ({ ...prev, [event.target.name]: event.target.value }))
   }
 
@@ -24,7 +23,6 @@ function Step3({ formData, setFormData, onNextStep }) {
       if (response.ok) {
         const data = await response.json()
         if (data.success === true) {
-          toast.success('Votre compte a été créé avec succès')
           localStorage.setItem('user', JSON.stringify(data.user))
           onNextStep()
         } else {
@@ -37,11 +35,11 @@ function Step3({ formData, setFormData, onNextStep }) {
   }
 
   return (
-    <div className="m-0 pt-20 pb-10 pl-5 pr-5 h-screen w-screen flex flex-col justify-between  items-center">
+    <div className="m-0 pt-5 pb-5 pl-5 pr-5 h-screen w-screen flex flex-col justify-between  items-center">
       <div className="flex flex-col items-center justify-center">
         <Stepper step={3} />
-        <h1 className="text-3xl font-bold mb-8">Votre nom et prénom</h1>
-        <p className="font-xs">Tous les champs sont obligatoires.</p>
+        <h1 className="text-3xl font-bold mb-7 mt-5 p-0">Votre nom et prénom</h1>
+        <p className="font-xs pb-5">Tous les champs sont obligatoires.</p>
         <input
           onChange={(event) => { handleChange(event) }}
           name="name"

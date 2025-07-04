@@ -9,11 +9,11 @@ function Step2({ formData, setFormData, onNextStep }) {
   }
 
   return (
-    <div className="m-0 pt-20 pb-10 pl-5 pr-5 h-screen w-screen flex flex-col justify-between items-center">
+    <div className="m-0 pt-5 pb-5 pl-5 pr-5 h-screen w-screen flex flex-col justify-between items-center">
       <div className="flex flex-col justify-center items-center">
         <Stepper step={2} />
-        <h1 className="text-3xl font-bold mb-8">Confirmez votre numéro</h1>
-        <p className="text-xs">Entrez le code reçu au {formData.indicatif_code}{formData.numero.value.slice(1)}.</p>
+        <h1 className="text-3xl font-bold mb-7 mt-5 p-0">Confirmez votre numéro</h1>
+        <p className="text-xs pb-5">Entrez le code reçu au {formData.indicatif_code}{formData.numero.value.slice(1)}.</p>
         <OtpInput
           value={formData.code_verified}
           onChange={handleChange}

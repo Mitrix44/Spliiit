@@ -20,17 +20,17 @@ function Step1({ onNextStep, formData, setFormData }) {
     }
   }
   return (
-    <form className="m-0 pt-20 pb-10 pl-5 pr-5 h-screen w-screen flex flex-col justify-between items-center" onSubmit={(event) => { handleSubmit(event) }}>
+    <form className="m-0 pt-5 pb-5 pl-5 pr-5 h-screen w-screen flex flex-col justify-between items-center" onSubmit={(event) => { handleSubmit(event) }}>
       <div className="h-full w-full flex flex-col justify-start items-center">
         <Stepper step={1} />
-        <h1 className="text-3xl font-bold mb-8">Connexion & Inscription</h1>
-        <div className="p-0 m-0 gap-5 flex flex-col justify-start items-center w-full">
+        <h1 className="text-3xl font-bold mb-7 mt-5 p-0">Connexion & Inscription</h1>
+        <div className="p-0 m-0 gap-7 flex flex-col justify-start items-center w-full">
           <select onChange={(event) => { setFormData((prev) => ({ ...prev, indicatif_code: event.target.value })) }} className="border-slate-300 w-full border-2 p-3 rounded-lg">
             {indicatifs.map(indicatif =>
               <option key={indicatif.indicatif} className="p-1 border-slate-300" value={indicatif.indicatif}>{indicatif.longName} ({indicatif.indicatif})</option>)}
           </select>
           <input type="text" onChange={(event) => { setFormData((prev) => ({ ...prev, numero: { value: event.target.value, error: false } })) }} className={formData.numero.error ? 'w-full border-2 p-3 rounded-lg border-red-500' : 'w-full border-2 p-3 rounded-lg border-slate-300'} placeholder="Numéro de téléphone" />
-          <p className="text-xs">Nous vous appellerons ou vous enverrons un SMS pour confirmer votre numéro. Aucun frais ne sera facturé.</p>
+          <p className="text-xs p-3">Nous vous appellerons ou vous enverrons un SMS pour confirmer votre numéro. Aucun frais ne sera facturé.</p>
 
         </div>
       </div>
